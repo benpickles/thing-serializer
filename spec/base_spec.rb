@@ -16,6 +16,24 @@ RSpec.describe ThingSerializer::Base do
     end
   end
 
+  describe '.to_proc' do
+    let(:serializer_klass) {
+      Class.new {
+        include ThingSerializer::Base
+        attribute :name
+      }
+    }
+    let(:thing) { thing_klass.new(1, 'foo', 'pow') }
+    let(:thing_klass) { Struct.new(:id, :name, :zap) }
+
+    it do
+      collection = [thing].map(&serializer_klass)
+      item = collection.first
+
+      expect(item.as_json).to eql({ name: 'foo' })
+    end
+  end
+
   describe '#as_json' do
     let(:thing) { thing_klass.new(1, 'foo', 'pow') }
     let(:thing_klass) { Struct.new(:id, :name, :zap) }

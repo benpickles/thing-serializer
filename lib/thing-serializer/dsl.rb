@@ -15,5 +15,9 @@ module ThingSerializer
     def config
       @config ||= Config.new
     end
+
+    def to_proc
+      ->(object) { new(object) }
+    end
   end
 end
