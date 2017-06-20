@@ -1,5 +1,7 @@
 # ThingSerializer
 
+[![Build Status](https://travis-ci.org/benpickles/thing-serializer.svg?branch=master)](https://travis-ci.org/benpickles/thing-serializer)
+
 A not very clever object serializer.
 
 ## Example
