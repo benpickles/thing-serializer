@@ -16,10 +16,15 @@ class CategorySerializer
 
   # `attribute` / `attributes` first look for a matching method on the
   # serializer and then its `object`.
-  attribute :_links
-  attributes :id, :name, :products
+  attributes :_embedded, :_links
+  attributes :id, :name
 
-  # Here, `_links` is a method that returns a HAL-like shape.
+  def _embedded
+    {
+      products: products,
+    }
+  end
+
   def _links
     {
       self: {
@@ -28,12 +33,13 @@ class CategorySerializer
     }
   end
 
-  # Access a serializer's `object` to define associations and other
-  # non-standard attributes.
-  def products
-    # Easily map objects to serializers with `.to_proc`.
-    object.products.map(&ProductSerializer)
-  end
+  private
+    # Access a serializer's `object` to define associations and other
+    # non-standard attributes.
+    def products
+      # Easily map objects to serializers with `.to_proc`.
+      object.products.map(&ProductSerializer)
+    end
 end
 
 class ProductSerializer
