@@ -6,6 +6,8 @@ module ThingSerializer
       base.extend DSL
     end
 
+    attr_reader :object
+
     def initialize(object)
       @object = object
     end
@@ -18,8 +20,6 @@ module ThingSerializer
     end
 
     private
-      attr_reader :object
-
       def value_for_property(name)
         if self.respond_to?(name)
           self.public_send(name)
