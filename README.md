@@ -1,6 +1,6 @@
 # ThingSerializer
 
-[![Build Status](https://travis-ci.org/benpickles/thing-serializer.svg?branch=master)](https://travis-ci.org/benpickles/thing-serializer)
+[![GitHub Actions status](https://github.com/benpickles/thing-serializer/workflows/Tests/badge.svg)](https://github.com/benpickles/thing-serializer)
 
 A not very clever object serializer.
 
